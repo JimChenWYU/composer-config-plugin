@@ -16,11 +16,12 @@ use hiqdev\composer\config\configs\ConfigFactory;
 use hiqdev\composer\config\configs\Defines;
 use hiqdev\composer\config\configs\Params;
 use hiqdev\composer\config\configs\System;
+use hiqdev\composer\config\tests\unit\TestCase;
 
 /**
  * ConfigFactoryTest.
  */
-class ConfigFactoryTest extends \PHPUnit\Framework\TestCase
+class ConfigFactoryTest extends TestCase
 {
     protected $builder;
 

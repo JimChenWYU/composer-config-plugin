@@ -16,11 +16,12 @@ use hiqdev\composer\config\readers\JsonReader;
 use hiqdev\composer\config\readers\PhpReader;
 use hiqdev\composer\config\readers\ReaderFactory;
 use hiqdev\composer\config\readers\YamlReader;
+use hiqdev\composer\config\tests\unit\TestCase;
 
 /**
  * ReaderFactoryTest.
  */
-class ReaderFactoryTest extends \PHPUnit\Framework\TestCase
+class ReaderFactoryTest extends TestCase
 {
     protected $builder;
 
