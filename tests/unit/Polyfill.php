@@ -2,8 +2,7 @@
 
 namespace hiqdev\composer\config\tests\unit;
 
-
-if (version_compare(PHP_VERSION, '5.5', '>')) {
+if (version_compare(PHP_VERSION, '5.6', '>=')) {
     trait Polyfill
     {
     }
