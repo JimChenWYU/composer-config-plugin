@@ -50,7 +50,7 @@ How it works?
 + PHP >= 5.5
 + Composer
 
-**notice**: If your php version is larger than or equal to 7.1, please use [hiqdev/composer-config-plugin](https://github.com/hiqdev/composer-config-plugin) instead.
+**notice**: If your php version is larger than or equal to 7.0, please use [hiqdev/composer-config-plugin](https://github.com/hiqdev/composer-config-plugin) instead.
 
 ## Installation
 
