@@ -7,7 +7,7 @@
 Composer plugin for config assembling. Fork from https://github.com/hiqdev/composer-config-plugin
 
 [![Latest Stable Version](https://poser.pugx.org/jimchen/composer-config-plugin/v/stable)](https://packagist.org/packages/jimchen/composer-config-plugin)
-[![Build Status](https://img.shields.io/travis/JimChenWYU/composer-config-plugin.svg)](https://travis-ci.org/jimchen/composer-config-plugin)
+[![Build Status](https://img.shields.io/travis/JimChenWYU/composer-config-plugin.svg)](https://travis-ci.org/JimChenWYU/composer-config-plugin)
 [![Scrutinizer Code Coverage](https://img.shields.io/scrutinizer/coverage/g/JimChenWYU/composer-config-plugin.svg)](https://scrutinizer-ci.com/g/JimChenWYU/composer-config-plugin/)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/JimChenWYU/composer-config-plugin.svg)](https://scrutinizer-ci.com/g/JimChenWYU/composer-config-plugin/)
 
