@@ -17,6 +17,8 @@ use hiqdev\composer\config\exceptions\FailedReadException;
  * Reader - helper to read data from files of different types.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 abstract class AbstractReader
 {
@@ -30,7 +32,7 @@ abstract class AbstractReader
         $this->builder = $builder;
     }
 
-    public function getBuilder(): Builder
+    public function getBuilder()
     {
         return $this->builder;
     }

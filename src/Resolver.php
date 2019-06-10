@@ -17,6 +17,8 @@ use hiqdev\composer\config\exceptions\CircularDependencyException;
  * Reorders files according to their cross dependencies
  * and resolves `$name` pathes.
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class Resolver
 {

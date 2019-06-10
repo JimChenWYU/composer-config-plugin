@@ -14,10 +14,12 @@ namespace hiqdev\composer\config\configs;
  * Defines class represents output configuration file with constant definitions.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class Defines extends Config
 {
-    protected function loadFile($path): array
+    protected function loadFile($path)
     {
         parent::loadFile($path);
         if (pathinfo($path, PATHINFO_EXTENSION) !== 'php') {
@@ -27,7 +29,7 @@ class Defines extends Config
         return [$path];
     }
 
-    public function buildRequires(): string
+    public function buildRequires()
     {
         $res = [];
         foreach ($this->values as $path) {
@@ -37,7 +39,13 @@ class Defines extends Config
         return implode("\n", $res);
     }
 
-    protected function writeFile(string $path, array $data): void
+    /**
+     * @param string $path
+     * @param array  $data
+     * @throws \ReflectionException
+     * @throws \hiqdev\composer\config\exceptions\FailedWriteException
+     */
+    protected function writeFile($path, array $data)
     {
         $this->writePhpFile($path, $this->buildRequires(), true, false);
     }

@@ -17,6 +17,8 @@ use ReflectionFunction;
  * Helper class.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class Helper
 {
@@ -25,7 +27,7 @@ class Helper
      * Based on Yii2 yii\helpers\BaseArrayHelper::merge.
      * @return array the merged array
      */
-    public static function mergeConfig(): array
+    public static function mergeConfig()
     {
         $args = \func_get_args();
         $res = array_shift($args) ?: [];
@@ -59,7 +61,7 @@ class Helper
         return $res;
     }
 
-    public static function exportDefines(array $defines): string
+    public static function exportDefines(array $defines)
     {
         $res = '';
         foreach ($defines as $key => $value) {
@@ -77,7 +79,7 @@ class Helper
      * @return string
      * @throws \ReflectionException
      */
-    public static function exportVar($value): string
+    public static function exportVar($value)
     {
         $closures = self::collectClosures($value);
         $res = var_export($value, true);
@@ -98,7 +100,7 @@ class Helper
      * @param mixed $input will be changed
      * @return array array of found closures
      */
-    private static function collectClosures(&$input): array
+    private static function collectClosures(&$input)
     {
         static $closureNo = 1;
         $closures = [];
@@ -125,7 +127,7 @@ class Helper
      * @return string
      * @throws \ReflectionException
      */
-    public static function dumpClosure(Closure $closure): string
+    public static function dumpClosure(Closure $closure)
     {
         $res = 'function (';
         $fun = new ReflectionFunction($closure);

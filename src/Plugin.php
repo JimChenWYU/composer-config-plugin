@@ -21,6 +21,8 @@ use Composer\Script\ScriptEvents;
  * Plugin class.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class Plugin implements PluginInterface, EventSubscriberInterface
 {
@@ -121,7 +123,10 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         }
     }
 
-    protected function reorderFiles(): void
+    /**
+     * @return void
+     */
+    protected function reorderFiles()
     {
         foreach (array_keys($this->files) as $name) {
             $this->files[$name] = $this->getAllFiles($name);
@@ -131,7 +136,11 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         }
     }
 
-    protected function getAllFiles(string $name): array
+    /**
+     * @param string $name
+     * @return array
+     */
+    protected function getAllFiles($name)
     {
         if (empty($this->files[$name])) {
             return[];
@@ -148,7 +157,11 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         return $res;
     }
 
-    protected function orderFiles(array $files): array
+    /**
+     * @param array $files
+     * @return array
+     */
+    protected function orderFiles(array $files)
     {
         if (empty($files)) {
             return [];
@@ -225,7 +238,12 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 
     protected $orderedFiles = [];
 
-    protected function addFile(Package $package, string $name, string $path)
+    /**
+     * @param Package $package
+     * @param string  $name
+     * @param string  $path
+     */
+    protected function addFile(Package $package, $name, $path)
     {
         $path = $package->preparePath($path);
         if (!isset($this->files[$name])) {

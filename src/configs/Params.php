@@ -14,15 +14,17 @@ namespace hiqdev\composer\config\configs;
  * Params class represents output configuration file with params definitions.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class Params extends Config
 {
-    protected function calcValues(array $sources): array
+    protected function calcValues(array $sources)
     {
         return $this->pushEnvVars(parent::calcValues($sources));
     }
 
-    protected function pushEnvVars($vars): array
+    protected function pushEnvVars($vars)
     {
         $env = $this->builder->getConfig('dotenv')->getValues();
         if (!empty($vars)) {

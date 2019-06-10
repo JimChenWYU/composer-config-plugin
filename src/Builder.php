@@ -16,6 +16,8 @@ use hiqdev\composer\config\configs\ConfigFactory;
  * Builder assembles config files.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class Builder
 {
@@ -46,7 +48,7 @@ class Builder
         $this->outputDir = $outputDir ?: static::findOutputDir();
     }
 
-    public function getOutputDir(): string
+    public function getOutputDir()
     {
         return $this->outputDir;
     }
@@ -104,7 +106,7 @@ class Builder
      * Builds configs by given files list.
      * @param null|array $files files to process: config name => list of files
      */
-    public function buildUserConfigs(array $files): array
+    public function buildUserConfigs(array $files)
     {
         $resolver = new Resolver($files);
         $files = $resolver->get();
@@ -136,7 +138,7 @@ class Builder
         return $config;
     }
 
-    public function getConfig(string $name)
+    public function getConfig($name)
     {
         if (!isset($this->configs[$name])) {
             $this->configs[$name] = $this->createConfig($name);
@@ -160,7 +162,7 @@ class Builder
         $this->getConfig('aliases')->mergeValues($aliases);
     }
 
-    public function setPackage(string $name, array $data)
+    public function setPackage($name, array $data)
     {
         $this->getConfig('packages')->setValue($name, $data);
     }

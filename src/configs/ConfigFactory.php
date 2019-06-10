@@ -17,6 +17,8 @@ use hiqdev\composer\config\Builder;
  * according to config name (and mayby other options later).
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class ConfigFactory
 {
@@ -35,9 +37,10 @@ class ConfigFactory
      * @param string $name
      * @return Config
      */
-    public static function create(Builder $builder, string $name): Config
+    public static function create(Builder $builder, $name)
     {
-        $class = static::$knownTypes[$name] ?? Config::class;
+//        $class = static::$knownTypes[$name] ?? Config::class;
+        $class = isset(static::$knownTypes[$name]) ? static::$knownTypes[$name] : Config::class;
 
         return new $class($builder, $name);
     }

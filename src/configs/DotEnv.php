@@ -14,10 +14,18 @@ namespace hiqdev\composer\config\configs;
  * DotEnv class represents output configuration file with ENV values.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class DotEnv extends Config
 {
-    protected function writeFile(string $path, array $data): void
+    /**
+     * @param string $path
+     * @param array  $data
+     * @throws \ReflectionException
+     * @throws \hiqdev\composer\config\exceptions\FailedWriteException
+     */
+    protected function writeFile($path, array $data)
     {
         $this->writePhpFile($path, $data, false, false);
     }

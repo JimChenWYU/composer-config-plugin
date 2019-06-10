@@ -15,36 +15,44 @@ namespace hiqdev\composer\config\configs;
  * __files, aliases, packages.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class System extends Config
 {
-    public function setValue(string $name, $value): Config
+    public function setValue($name, $value)
     {
         $this->values[$name] = $value;
 
         return $this;
     }
 
-    public function setValues(array $values): Config
+    public function setValues(array $values)
     {
         $this->values = $values;
 
         return $this;
     }
 
-    public function mergeValues(array $values): Config
+    public function mergeValues(array $values)
     {
         $this->values = array_merge($this->values, $values);
 
         return $this;
     }
 
-    protected function writeFile(string $path, array $data): void
+    /**
+     * @param string $path
+     * @param array  $data
+     * @throws \ReflectionException
+     * @throws \hiqdev\composer\config\exceptions\FailedWriteException
+     */
+    protected function writeFile($path, array $data)
     {
         $this->writePhpFile($path, $data, false, false);
     }
 
-    public function load(array $paths = []): Config
+    public function load(array $paths = [])
     {
         $path = $this->getOutputPath();
         if (!file_exists($path)) {
@@ -56,7 +64,7 @@ class System extends Config
         return $this;
     }
 
-    public function build(): Config
+    public function build()
     {
         $this->values = $this->substituteOutputDirs($this->values);
 

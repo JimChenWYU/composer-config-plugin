@@ -19,6 +19,8 @@ use hiqdev\composer\config\readers\ReaderFactory;
  * Config class represents output configuration file.
  *
  * @author Andrii Vasyliev <sol@hiqdev.com>
+ *
+ * @since php5.5
  */
 class Config
 {
@@ -45,28 +47,33 @@ class Config
      */
     protected $builder;
 
-    public function __construct(Builder $builder, string $name)
+    /**
+     * Config constructor.
+     * @param Builder $builder
+     * @param string  $name
+     */
+    public function __construct(Builder $builder, $name)
     {
         $this->builder = $builder;
         $this->name = $name;
     }
 
-    public function getBuilder(): Builder
+    public function getBuilder()
     {
         return $this->builder;
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function getValues(): array
+    public function getValues()
     {
         return $this->values;
     }
 
-    public function load(array $paths = []): self
+    public function load(array $paths = [])
     {
         $configs = [];
         foreach ($paths as $path) {
@@ -86,7 +93,7 @@ class Config
      * @param string $path
      * @return array configuration read from file
      */
-    protected function loadFile($path): array
+    protected function loadFile($path)
     {
         $reader = ReaderFactory::get($this->builder, $path);
 
@@ -97,51 +104,57 @@ class Config
      * Merges given configs and writes at given name.
      * @return Config
      */
-    public function build(): self
+    public function build()
     {
         $this->values = $this->calcValues($this->sources);
 
         return $this;
     }
 
-    public function write(): self
+    public function write()
     {
         $this->writeFile($this->getOutputPath(), $this->values);
 
         return $this;
     }
 
-    protected function calcValues(array $sources): array
+    protected function calcValues(array $sources)
     {
         $values = call_user_func_array([Helper::class, 'mergeConfig'], $sources);
 
         return $this->substituteOutputDirs($values);
     }
 
-    protected function writeFile(string $path, array $data): void
+    /**
+     * @param string $path
+     * @param array  $data
+     * @throws FailedWriteException
+     * @throws \ReflectionException
+     */
+    protected function writeFile($path, array $data)
     {
         $this->writePhpFile($path, $data, true, true);
     }
 
     /**
      * Writes complete PHP config file by full path.
-     * @param string $path
+     * @param string       $path
      * @param string|array $data
-     * @param bool $withEnv
-     * @param bool $withDefines
+     * @param bool         $withEnv
+     * @param bool         $withDefines
      * @throws FailedWriteException
      * @throws \ReflectionException
      */
-    protected function writePhpFile(string $path, $data, bool $withEnv, bool $withDefines): void
+    protected function writePhpFile($path, $data, $withEnv, $withDefines)
     {
         static::putFile($path, $this->replaceMarkers(implode("\n\n", array_filter([
-            'header'  => '<?php',
-            'baseDir' => '$baseDir = dirname(dirname(dirname(__DIR__)));',
-            'BASEDIR' => "defined('COMPOSER_CONFIG_PLUGIN_BASEDIR') or define('COMPOSER_CONFIG_PLUGIN_BASEDIR', \$baseDir);",
-            'dotenv'  => $withEnv ? "\$_ENV = array_merge((array) require __DIR__ . '/dotenv.php', (array) \$_ENV);" : '',
-            'defines' => $withDefines ? $this->builder->getConfig('defines')->buildRequires() : '',
-            'content' => is_array($data) ? $this->renderVars($data) : $data,
-        ]))) . "\n");
+                'header'  => '<?php',
+                'baseDir' => '$baseDir = dirname(dirname(dirname(__DIR__)));',
+                'BASEDIR' => "defined('COMPOSER_CONFIG_PLUGIN_BASEDIR') or define('COMPOSER_CONFIG_PLUGIN_BASEDIR', \$baseDir);",
+                'dotenv'  => $withEnv ? "\$_ENV = array_merge((array) require __DIR__ . '/dotenv.php', (array) \$_ENV);" : '',
+                'defines' => $withDefines ? $this->builder->getConfig('defines')->buildRequires() : '',
+                'content' => is_array($data) ? $this->renderVars($data) : $data,
+            ]))) . "\n");
     }
 
     /**
@@ -149,12 +162,16 @@ class Config
      * @return string
      * @throws \ReflectionException
      */
-    protected function renderVars(array $vars): string
+    protected function renderVars(array $vars)
     {
         return 'return ' . Helper::exportVar($vars) . ';';
     }
 
-    protected function replaceMarkers(string $content): string
+    /**
+     * @param string $content
+     * @return string
+     */
+    protected function replaceMarkers($content)
     {
         $content = str_replace("'" . static::BASE_DIR_MARKER, "\$baseDir . '", $content);
 
@@ -167,7 +184,7 @@ class Config
      * @param string $content
      * @throws FailedWriteException
      */
-    protected static function putFile($path, $content): void
+    protected static function putFile($path, $content)
     {
         if (file_exists($path) && $content === file_get_contents($path)) {
             return;
@@ -185,7 +202,7 @@ class Config
      * @param array $data
      * @return array
      */
-    public function substituteOutputDirs(array $data): array
+    public function substituteOutputDirs(array $data)
     {
         $dir = static::normalizePath(dirname(dirname(dirname($this->getOutputDir()))));
 
@@ -199,7 +216,7 @@ class Config
      * @param string $ds directory separator
      * @return string
      */
-    public static function normalizePath($path, $ds = self::UNIX_DS): string
+    public static function normalizePath($path, $ds = self::UNIX_DS)
     {
         return rtrim(strtr($path, '/\\', $ds . $ds), $ds);
     }
@@ -211,7 +228,7 @@ class Config
      * @param string $alias
      * @return array
      */
-    public static function substitutePaths($data, $dir, $alias): array
+    public static function substitutePaths($data, $dir, $alias)
     {
         foreach ($data as &$value) {
             if (is_string($value)) {
@@ -231,7 +248,7 @@ class Config
      * @param string $alias
      * @return string
      */
-    protected static function substitutePath($path, $dir, $alias): string
+    protected static function substitutePath($path, $dir, $alias)
     {
         $end = $dir . self::UNIX_DS;
         $skippable = 0 === strncmp($path, '?', 1) ? '?' : '';
@@ -250,12 +267,16 @@ class Config
         return $skippable . $result;
     }
 
-    public function getOutputDir(): string
+    public function getOutputDir()
     {
         return $this->builder->getOutputDir();
     }
 
-    public function getOutputPath(string $name = null): string
+    /**
+     * @param string|null $name
+     * @return string
+     */
+    public function getOutputPath($name = null)
     {
         return $this->builder->getOutputPath($name ?: $this->name);
     }

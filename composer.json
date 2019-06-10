@@ -41,14 +41,19 @@
             "role": "QA Lead",
             "email": "bladeroot@gmail.com",
             "homepage": "http://hiqdev.com/"
+        },
+        {
+            "name": "JimChen",
+            "email": "imjimchen@163.com"
         }
     ],
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=5.5",
         "composer-plugin-api": "^1.0"
     },
     "require-dev": {
-        "composer/composer": "~1.0@dev"
+        "composer/composer": "~1.0@dev",
+        "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5"
     },
     "suggest": {
         "vlucas/phpdotenv": "^2.0 for `.env` files support",
