@@ -1,5 +1,5 @@
 {
-    "name": "hiqdev/composer-config-plugin",
+    "name": "jimchen/composer-config-plugin",
     "type": "composer-plugin",
     "description": "Composer plugin for config assembling",
     "keywords": [

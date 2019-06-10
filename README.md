@@ -4,7 +4,7 @@
     <br>
 </p>
 
-Composer plugin for config assembling.
+Composer plugin for config assembling. Fork from https://github.com/hiqdev/composer-config-plugin
 
 [![Latest Stable Version](https://poser.pugx.org/hiqdev/composer-config-plugin/v/stable)](https://packagist.org/packages/hiqdev/composer-config-plugin)
 [![Total Downloads](https://poser.pugx.org/hiqdev/composer-config-plugin/downloads)](https://packagist.org/packages/hiqdev/composer-config-plugin)
@@ -44,6 +44,13 @@ How it works?
 [composer]: https://getcomposer.org/
 [English]:  https://hiqdev.com/pages/articles/app-organization
 [Russian]:  https://habrahabr.ru/post/329286/
+
+## Requirement
+
++ PHP >= 5.5
++ Composer
+
+**notice**: If your php version is larger than or equal to 7.1, please use [hiqdev/composer-config-plugin](https://github.com/hiqdev/composer-config-plugin) instead.
 
 ## Installation
 
@@ -185,4 +192,4 @@ return [
 This project is released under the terms of the BSD-3-Clause [license](LICENSE).
 Read more [here](http://choosealicense.com/licenses/bsd-3-clause).
 
-Copyright © 2016-2018, HiQDev (http://hiqdev.com/)
+Copyright © 2016-2018, Jim Chen
