@@ -48,12 +48,12 @@ How it works?
 + PHP >= 5.5
 + Composer
 
-**notice**: If your php version is larger than or equal to 7.0, please use [hiqdev/composer-config-plugin](https://github.com/hiqdev/composer-config-plugin) instead.
+**Notice**: If your php version is larger than or equal to 7.0, please use [hiqdev/composer-config-plugin](https://github.com/hiqdev/composer-config-plugin) instead.
 
 ## Installation
 
 ```sh
-composer require "hiqdev/composer-config-plugin"
+composer require "jimchen/composer-config-plugin"
 ```
 
 Out of the box this plugin supports configs in PHP and JSON formats.
