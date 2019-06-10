@@ -64,6 +64,11 @@
             "hiqdev\\composer\\config\\": "src"
         }
     },
+    "autoload-dev": {
+        "classmap": [
+            "tests/unit"
+        ]
+    },
     "extra": {
         "class": "hiqdev\\composer\\config\\Plugin",
         "branch-alias": {

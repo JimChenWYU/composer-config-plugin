@@ -39,7 +39,7 @@ class ReaderFactoryTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($yml, $yaml);
     }
 
-    public function checkGet(string $name, string $class)
+    public function checkGet($name, $class)
     {
         $reader = ReaderFactory::get($this->builder, $name);
         $this->assertInstanceOf($class, $reader);

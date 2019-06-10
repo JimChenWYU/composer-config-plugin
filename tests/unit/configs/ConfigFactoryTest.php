@@ -34,7 +34,7 @@ class ConfigFactoryTest extends \PHPUnit\Framework\TestCase
         $this->checkCreate('__files',   System::class);
     }
 
-    public function checkCreate(string $name, string $class)
+    public function checkCreate($name, $class)
     {
         $config = ConfigFactory::create($this->builder, $name);
         $this->assertInstanceOf($class, $config);
