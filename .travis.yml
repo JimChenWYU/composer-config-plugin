@@ -12,4 +12,7 @@ before_install:
     - 'composer --version'
 sudo: false
 install: travis_retry composer install --no-interaction --prefer-source
-script: ./vendor/bin/phpunit --verbose --coverage-text
+script:
+    - ./vendor/bin/phpunit -coverage-clover=coverage.clover
+    - wget https://scrutinizer-ci.com/ocular.phar
+    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
