@@ -6,12 +6,10 @@
 
 Composer plugin for config assembling. Fork from https://github.com/hiqdev/composer-config-plugin
 
-[![Latest Stable Version](https://poser.pugx.org/hiqdev/composer-config-plugin/v/stable)](https://packagist.org/packages/hiqdev/composer-config-plugin)
-[![Total Downloads](https://poser.pugx.org/hiqdev/composer-config-plugin/downloads)](https://packagist.org/packages/hiqdev/composer-config-plugin)
-[![Build Status](https://img.shields.io/travis/hiqdev/composer-config-plugin.svg)](https://travis-ci.org/hiqdev/composer-config-plugin)
-[![Scrutinizer Code Coverage](https://img.shields.io/scrutinizer/coverage/g/hiqdev/composer-config-plugin.svg)](https://scrutinizer-ci.com/g/hiqdev/composer-config-plugin/)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/hiqdev/composer-config-plugin.svg)](https://scrutinizer-ci.com/g/hiqdev/composer-config-plugin/)
-[![Dependency Status](https://www.versioneye.com/php/hiqdev:composer-config-plugin/dev-master/badge.svg)](https://www.versioneye.com/php/hiqdev:composer-config-plugin/dev-master)
+[![Latest Stable Version](https://poser.pugx.org/jimchen/composer-config-plugin/v/stable)](https://packagist.org/packages/jimchen/composer-config-plugin)
+[![Build Status](https://img.shields.io/travis/JimChenWYU/composer-config-plugin.svg)](https://travis-ci.org/jimchen/composer-config-plugin)
+[![Scrutinizer Code Coverage](https://img.shields.io/scrutinizer/coverage/g/JimChenWYU/composer-config-plugin.svg)](https://scrutinizer-ci.com/g/jimchen/composer-config-plugin/)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/JimChenWYU/composer-config-plugin.svg)](https://scrutinizer-ci.com/g/jimchen/composer-config-plugin/)
 
 This [Composer] plugin provides assembling
 of configurations distributed with composer packages.
