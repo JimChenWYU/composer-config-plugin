@@ -10,6 +10,7 @@
 
 namespace hiqdev\composer\config;
 
+use Closure;
 use hiqdev\composer\config\configs\ConfigFactory;
 
 /**
@@ -90,6 +91,21 @@ class Builder
     public static function path($filename, $vendor = null)
     {
         return static::findOutputDir($vendor) . DIRECTORY_SEPARATOR . $filename . '.php';
+    }
+
+    /**
+     * Returns full path to assembled config file, if not exists, will return the default value.
+     * @param string $filename
+     * @param string $default
+     * @return mixed|string
+     */
+    public static function pathHasDefault($filename, $default = '')
+    {
+        if (!file_exists($path = self::path($filename))) {
+            return $default instanceof Closure ? $default() : $default;
+        }
+
+        return $path;
     }
 
     /**
