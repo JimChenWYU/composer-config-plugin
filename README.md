@@ -108,7 +108,7 @@ return [
 To load assembled configs in your application use `require`:
 
 ```php
-$config = require hiqdev\composer\config\Builder::path('web');
+$config = require hiqdev\composer\config\Builder::pathHasDefault('web', __DIR__ . '/../web.php');
 ```
 
 ### Refreshing config
