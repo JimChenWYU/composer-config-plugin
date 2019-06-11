@@ -74,7 +74,7 @@ class Builder
     public static function findOutputDir($vendor = null)
     {
         if ($vendor) {
-            $dir = $vendor . '/hiqdev/' . basename(dirname(__DIR__));
+            $dir = $vendor . '/jimchen/' . basename(dirname(__DIR__));
         } else {
             $dir = \dirname(__DIR__);
         }
